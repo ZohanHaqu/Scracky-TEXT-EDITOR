@@ -19,7 +19,7 @@ Scracky is a modern text editor developed by Zohan Haque, designed to empower ad
 
 Scracky uses InstallSimple for its installation process. Follow these steps to set it up:
 
-1. Download the Scracky installation package from the [Discord CDN Link (click it and it will download it)](https://cdn.discordapp.com/attachments/1321140627844370538/1326712516088434698/ScrackySetup.exe?ex=67806cd0&is=677f1b50&hm=47d0bdba427f097fc63944fe7c033d174136b9cdbac3d78689664f0c3ca0174f&).
+1. Download the Scracky installation package from the [GitHub Releases (click it and it will download it)](github.com/ZohanHaqu/Scracky-TEXT-EDITOR/releases/1.3/).
 2. Run the installer and follow the on-screen instructions.
 3. Select the destination folder for installation.
 4. Launch Scracky from the desktop shortcut or start menu.
