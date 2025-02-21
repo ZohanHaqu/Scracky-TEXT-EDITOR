@@ -1,0 +1,88 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="6C182355-0EB7-4D82-93F5-2F33A3686217" UpgradeCode="EBF3CA7D-9D52-4A21-868D-B7A21C0BB49E" Version="1.0.0.0" Name="Scracky" Manufacturer="Zohan Haque" Language="1033">
+    <Package InstallerVersion="405" InstallScope="perMachine" InstallPrivileges="elevated" Compressed="yes" Manufacturer="Zohan Haque" />
+    <Media Cabinet="media1.cab" Id="1" EmbedCab="yes" />
+    <Icon Id="MyIcon" SourceFile="Sckyicon.ico" />
+    <WixVariable Id="WixUILicenseRtf" Value="MIT.rtf" />
+    <WixVariable Id="WixUIDialogBmp" Value="ScrackyWizard\wizard.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="ScrackyWizard\header.bmp" />
+    <Property Id="ARPPRODUCTICON" Value="MyIcon" />
+    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MenuAppFolder" Name="TheAppName" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MyAppFolder" Name="Scracky" />
+      </Directory>
+    </Directory>
+    
+    <Feature Id="ProductFeature" Title="Scracky" Description="A text editor">
+      <ComponentRef Id="Remove.ProgramFilesFolder" />
+      <ComponentRef Id="CId08371142" />
+      <ComponentRef Id="CId9A1BCA6F" />
+      <ComponentRef Id="CId432F02D4" />
+      <ComponentRef Id="CSCIdF786EB77" />
+      <ComponentRef Id="CSCId44336557" />
+      <ComponentRef Id="CIdA839835A" />
+      <ComponentRef Id="CId52F71F47" />
+      <ComponentRef Id="Remove.MenuAppFolder" />
+    </Feature>
+    
+    <UIRef Id="WixUI_FeatureTree" />
+    
+    <DirectoryRef Id="ProgramFilesFolder">
+      <Component Id="Remove.ProgramFilesFolder" Guid="F7FE6F23-9AEA-4DBC-B882-BED93A36086D">
+        <RemoveFolder Id="ProgramFilesFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="MyAppFolder">
+      <Component Id="CIdA839835A" Guid="2CA67AEE-55FF-4820-B219-700442BEA982" Win64="no">
+        <File Id="FIdD897D534" Name="PiscesApp.exe" Source="C:\Users\zohan\Downloads\Scracky\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId432F02D4" Guid="2572B214-313C-4544-B0D1-F9123859E793" Win64="no">
+        <File Id="FIdB9D91E8E" Name="PiscesApp.exe.config" Source="C:\Users\zohan\Downloads\Scracky\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId9A1BCA6F" Guid="B95ECF49-0D37-4A88-A992-2F505D2600BC" Win64="no">
+        <File Id="FId85F617C1" Name="PiscesApp.exe.manifest" Source="C:\Users\zohan\Downloads\Scracky\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId08371142" Guid="C4D8B259-3FAA-4C9F-8B79-B01F77931E25" Win64="no">
+        <File Id="FId030B32B5" Name="PiscesApp.pdb" Source="C:\Users\zohan\Downloads\Scracky\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId52F71F47" Guid="0F2D5AE2-FCDB-4808-99F8-4D82B9105D03" Win64="no">
+        <File Id="FIdD7354F12" Name="sckyicon.ico" Source="C:\Users\zohan\Downloads\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="ProgramMenuFolder">
+      <Component Id="CSCIdF786EB77" Guid="7A900834-B964-4297-8BB7-041104B45218">
+        <Shortcut Id="SId84AD70C2" Name="Scracky" Target="[!FIdD897D534]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCIdF786EB77" Directory="ProgramMenuFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="MenuAppFolder">
+      <Component Id="Remove.MenuAppFolder" Guid="4596B6A3-FDC4-4F53-ADBA-1F2126A83300">
+        <RemoveFolder Id="MenuAppFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="CSCId44336557" Guid="99A50395-E1C4-4205-9B2C-D550F6CD577E">
+        <Shortcut Id="SIdAB551F26" Name="Scracky" Description="EDIT DLLS AND EVERYTHING" Target="[!FIdD897D534]" WorkingDirectory="MyAppFolder" Icon="MyIcon" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId44336557" Directory="DesktopFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>
